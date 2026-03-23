@@ -18,18 +18,11 @@
         .chart-container {
             position: relative;
             width: 100%;
-            max-width: 800px;
+            max-width: 1000px;
             margin-left: auto;
             margin-right: auto;
-            height: 40vh;
-            max-height: 400px;
-        }
-
-        @media (min-width: 768px) {
-            .chart-container {
-                height: 50vh;
-                max-height: 450px;
-            }
+            height: 45vh;
+            max-height: 500px;
         }
 
         .nav-btn {
@@ -52,43 +45,35 @@
         }
 
         @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
+            from { opacity: 0; transform: translateY(15px); }
             to { opacity: 1; transform: translateY(0); }
-        }
-
-        .legacy-ui-mock {
-            background: #e5e5e5;
-            border: 1px solid #a3a3a3;
-            padding: 8px;
-            font-size: 13px;
-            border-radius: 0;
-            color: #404040;
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         .modern-ui-mock {
             background: #ffffff !important;
             border: 1px solid #e2e8f0 !important;
-            padding: 24px !important;
-            font-size: 15px !important;
-            border-radius: 12px !important;
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05) !important;
+            padding: 32px !important;
+            font-size: 16px !important;
+            border-radius: 16px !important;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1) !important;
             color: #0f172a !important;
             line-height: 1.6 !important;
         }
 
         .screenshot-wrapper {
-            border-radius: 16px;
+            border-radius: 24px;
             overflow: hidden;
-            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 30px 60px -12px rgba(0, 0, 0, 0.18);
             border: 1px solid #e2e8f0;
-            transition: transform 0.3s ease;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             position: relative;
             background: white;
+            width: 100%;
         }
         
         .screenshot-wrapper:hover {
-            transform: translateY(-5px);
+            transform: translateY(-8px);
+            box-shadow: 0 40px 80px -12px rgba(0, 0, 0, 0.25);
         }
         
         .img-overlay {
@@ -96,221 +81,241 @@
             bottom: 0;
             left: 0;
             right: 0;
-            background: rgba(0,0,0,0.6);
+            background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
             color: white;
-            font-size: 10px;
-            padding: 4px 8px;
-            text-align: center;
-            opacity: 0;
-            transition: opacity 0.3s;
+            font-size: 12px;
+            padding: 20px 24px;
+            font-weight: 500;
+        }
+
+        .why-card {
+            background: white;
+            padding: 32px;
+            border-radius: 24px;
+            border: 1px solid #f1f5f9;
+            box-shadow: 0 10px 15px -3px rgba(0,0,0,0.04);
+            height: 100%;
         }
         
-        .screenshot-wrapper:hover .img-overlay {
-            opacity: 1;
-        }
-        
-        .no-scrollbar::-webkit-scrollbar {
-            display: none;
-        }
-        .no-scrollbar {
-            -ms-overflow-style: none;
-            scrollbar-width: none;
-        }
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
     </style>
 </head>
 <body class="flex flex-col md:flex-row h-screen overflow-hidden">
 
-    <!-- Chosen Palette: Slate gray background (#f8fafc), Ant Design primary blue (#005EFF), Success green (#32C832), Warning orange (#FF961E). -->
-    
-    <!-- Application Structure Plan: A clean, modular SPA designed for high information density. Navigation is organized logically from high-level impact (Overview) to specific technical methodologies. This structure ensures a better story-telling flow for stakeholders. -->
-
-    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
-
-    <aside class="w-full md:w-72 bg-white border-r border-slate-200 flex flex-col z-20 h-auto md:h-full flex-shrink-0 shadow-lg md:shadow-none">
-        <div class="p-6 border-b border-slate-100 flex items-center gap-3">
-            <div class="w-10 h-10 bg-blue-50 text-[#005EFF] rounded-xl flex items-center justify-center text-xl font-black">Q</div>
+    <!-- Sidebar -->
+    <aside class="w-full md:w-80 bg-white border-r border-slate-200 flex flex-col z-20 h-auto md:h-full flex-shrink-0 shadow-lg md:shadow-none">
+        <div class="p-8 border-b border-slate-100 flex items-center gap-3">
+            <div class="w-12 h-12 bg-blue-50 text-[#005EFF] rounded-2xl flex items-center justify-center text-2xl font-black">Q</div>
             <div>
-                <h1 class="font-black text-lg text-slate-800 tracking-tight">QMAS 2026</h1>
-                <p class="text-[10px] text-slate-400 uppercase tracking-widest font-bold">Design Ops System</p>
+                <h1 class="font-black text-xl text-slate-800 tracking-tight">QMAS 2026</h1>
+                <p class="text-[10px] text-slate-400 uppercase tracking-widest font-bold">Evolution Report</p>
             </div>
         </div>
         
         <nav class="flex-1 p-4 overflow-x-auto md:overflow-y-auto flex md:flex-col gap-2 no-scrollbar" id="nav-menu">
             <div class="hidden md:block px-4 py-2 text-[10px] font-bold text-slate-400 uppercase tracking-widest mt-2">Executive Summary</div>
-            <button onclick="appState.navigate('overview')" id="nav-overview" class="nav-btn active w-full flex items-center gap-3 px-4 py-3 rounded-xl text-slate-600 hover:bg-slate-50">
+            <button onclick="appState.navigate('overview')" id="nav-overview" class="nav-btn active w-full flex items-center gap-3 px-4 py-4 rounded-2xl text-slate-600 hover:bg-slate-50">
                 <span class="text-xl">📊</span>
-                <span class="font-bold text-sm whitespace-nowrap">Executive Summary</span>
+                <span class="font-bold text-sm whitespace-nowrap">Global Impact</span>
             </button>
-            <div class="hidden md:block px-4 py-2 text-[10px] font-bold text-slate-400 uppercase tracking-widest mt-4">Workflow Evolution</div>
-            <button onclick="appState.navigate('review')" id="nav-review" class="nav-btn w-full flex items-center gap-3 px-4 py-3 rounded-xl text-slate-600 hover:bg-slate-50">
+            <div class="hidden md:block px-4 py-2 text-[10px] font-bold text-slate-400 uppercase tracking-widest mt-4">Core Methodologies</div>
+            <button onclick="appState.navigate('review')" id="nav-review" class="nav-btn w-full flex items-center gap-3 px-4 py-4 rounded-2xl text-slate-600 hover:bg-slate-50">
                 <span class="text-xl">💻</span>
                 <span class="font-bold text-sm whitespace-nowrap">Live Code Review</span>
             </button>
-            <button onclick="appState.navigate('system')" id="nav-system" class="nav-btn w-full flex items-center gap-3 px-4 py-3 rounded-xl text-slate-600 hover:bg-slate-50">
+            <button onclick="appState.navigate('system')" id="nav-system" class="nav-btn w-full flex items-center gap-3 px-4 py-4 rounded-2xl text-slate-600 hover:bg-slate-50">
                 <span class="text-xl">🎨</span>
-                <span class="font-bold text-sm whitespace-nowrap">Dual-Config System</span>
+                <span class="font-bold text-sm whitespace-nowrap">New Design System</span>
             </button>
-            <button onclick="appState.navigate('zerodom')" id="nav-zerodom" class="nav-btn w-full flex items-center gap-3 px-4 py-3 rounded-xl text-slate-600 hover:bg-slate-50">
+            <button onclick="appState.navigate('zerodom')" id="nav-zerodom" class="nav-btn w-full flex items-center gap-3 px-4 py-4 rounded-2xl text-slate-600 hover:bg-slate-50">
                 <span class="text-xl">⚙️</span>
                 <span class="font-bold text-sm whitespace-nowrap">Zero DOM Modernization</span>
             </button>
-            <button onclick="appState.navigate('ai')" id="nav-ai" class="nav-btn w-full flex items-center gap-3 px-4 py-3 rounded-xl text-slate-600 hover:bg-slate-50">
+            <button onclick="appState.navigate('ai')" id="nav-ai" class="nav-btn w-full flex items-center gap-3 px-4 py-4 rounded-2xl text-slate-600 hover:bg-slate-50">
                 <span class="text-xl">🤖</span>
                 <span class="font-bold text-sm whitespace-nowrap">AI Prototyping</span>
             </button>
         </nav>
     </aside>
 
-    <main class="flex-1 overflow-y-auto relative bg-slate-50">
+    <!-- Main Content -->
+    <main class="flex-1 overflow-y-auto relative bg-slate-50 p-6 md:p-12">
         
-        <!-- Overview Section -->
-        <section id="sec-overview" class="content-section active p-6 md:p-12 max-w-6xl mx-auto">
-            <div class="mb-10">
-                <p class="text-sm font-bold text-[#005EFF] mb-2 uppercase tracking-widest">Section 00 / Executive Summary</p>
-                <h2 class="text-3xl md:text-5xl font-black text-slate-900 mb-6 leading-tight">2026 UI/UX R&D Process Evolution Report</h2>
-                <p class="text-lg text-slate-600 leading-relaxed max-w-3xl">
-                    Our shift toward systematic development and AI-integrated workflows has led to a 40% improvement in development cycles while ensuring zero regressions.
+        <!-- Overview -->
+        <section id="sec-overview" class="content-section active max-w-7xl mx-auto space-y-12">
+            <div class="space-y-4">
+                <h2 class="text-4xl md:text-6xl font-black text-slate-900 tracking-tight">R&D Process Evolution 2026</h2>
+                <p class="text-xl text-slate-500 max-w-4xl leading-relaxed">
+                    Scaling our UI/UX capabilities by transitioning from manual handovers to an automated, token-driven, and AI-augmented ecosystem.
                 </p>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
-                <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200 border-l-4 border-l-[#005EFF]">
-                    <div class="text-3xl mb-2">⏱️</div>
-                    <h3 class="text-xl font-black text-slate-800 mb-2">40% Faster</h3>
-                    <p class="text-sm text-slate-500">Accelerated time-to-market through unified tokens and live reviews.</p>
-                </div>
-                <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200 border-l-4 border-l-[#32C832]">
-                    <div class="text-3xl mb-2">🛠️</div>
-                    <h3 class="text-xl font-black text-slate-800 mb-2">2/3 Cost Saving</h3>
-                    <p class="text-sm text-slate-500">Drastically reduced layout adjustment hours via grid standards.</p>
-                </div>
-                <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200 border-l-4 border-l-[#FF961E]">
-                    <div class="text-3xl mb-2">🛡️</div>
-                    <h3 class="text-xl font-black text-slate-800 mb-2">Zero Risk</h3>
-                    <p class="text-sm text-slate-500">Seamless modernization of legacy systems without breaking logic.</p>
-                </div>
-            </div>
-
-            <div class="bg-white p-8 rounded-3xl shadow-sm border border-slate-200">
-                <h3 class="text-2xl font-bold text-slate-800 mb-6">Development Efficiency Indicators</h3>
-                <div class="chart-container">
-                    <canvas id="efficiencyChart"></canvas>
-                </div>
-            </div>
-        </section>
-
-        <!-- Live Review Section -->
-        <section id="section-review" class="content-section p-6 md:p-12 max-w-6xl mx-auto">
-            <div class="mb-10">
-                <p class="text-sm font-bold text-[#005EFF] mb-2 uppercase tracking-widest">Section 01 / Frictionless Reviews</p>
-                <h2 class="text-3xl md:text-5xl font-black text-slate-900 mb-6 leading-tight">UI Discussion & Live Review</h2>
-                <p class="text-lg text-slate-600 leading-relaxed max-w-3xl">
-                    Moving from static design handovers to browser-based validation to close the gap between design and production.
-                </p>
-            </div>
-
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-                <div class="space-y-6">
-                    <div class="bg-blue-50 p-6 rounded-2xl border border-blue-100">
-                        <h4 class="text-xl font-bold text-blue-900 mb-2">Eliminating Mismatches</h4>
-                        <p class="text-blue-800 text-sm">Reviewing designs directly on the web reduces errors by 70%, identifying responsive issues instantly before they reach deployment.</p>
-                    </div>
-                    <ul class="space-y-4 text-slate-600">
-                        <li>✅ <strong>Real-time Feedback</strong>: Instant styling validation.</li>
-                        <li>✅ <strong>Dev-Ready Specs</strong>: Communicating via DOM and Inspector.</li>
-                        <li>✅ <strong>Production Data</strong>: Testing designs against real variables.</li>
-                    </ul>
-                </div>
-                <div class="screenshot-wrapper">
-                    <img src="Screenshot 2026-03-23 at 17.33.20.png" alt="Live Code Review Reference" class="w-full h-auto">
-                    <div class="img-overlay">Ref: Screenshot 2026-03-23 at 17.33.20.png</div>
-                </div>
-            </div>
-        </section>
-
-        <!-- System Section -->
-        <section id="section-system" class="content-section p-6 md:p-12 max-w-6xl mx-auto">
-            <div class="mb-10">
-                <p class="text-sm font-bold text-[#005EFF] mb-2 uppercase tracking-widest">Section 02 / Centralized Design</p>
-                <h2 class="text-3xl md:text-5xl font-black text-slate-900 mb-6 leading-tight">Dual-Config System Architecture</h2>
-            </div>
-
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
-                <div class="screenshot-wrapper order-2 lg:order-1">
-                    <img src="Screenshot 2026-03-23 at 20.26.53.png" alt="Design Tokens System" class="w-full h-auto">
-                    <div class="img-overlay">Ref: Screenshot 2026-03-23 at 20.26.53.png</div>
-                </div>
-                <div class="space-y-8 order-1 lg:order-2">
-                    <div class="flex flex-wrap gap-4">
-                        <button onclick="appState.setAccentColor('#005EFF')" class="color-swatch-btn bg-white px-4 py-2 rounded-lg border border-slate-200 shadow-sm flex items-center gap-2">
-                            <span class="w-4 h-4 rounded-full bg-[#005EFF]"></span>
-                            <span class="text-xs font-bold">Primary Blue</span>
-                        </button>
-                        <button onclick="appState.setAccentColor('#8B5CF6')" class="color-swatch-btn bg-white px-4 py-2 rounded-lg border border-slate-200 shadow-sm flex items-center gap-2">
-                            <span class="w-4 h-4 rounded-full bg-[#8B5CF6]"></span>
-                            <span class="text-xs font-bold">Violet Token</span>
-                        </button>
-                    </div>
-                    <div class="bg-slate-900 rounded-2xl p-6 text-indigo-300 font-mono text-xs leading-relaxed overflow-x-auto shadow-inner">
-                        <p class="text-slate-500 mb-2">// config synchronization</p>
-                        <span class="text-white">theme: { colors: { primary: '<span class="text-yellow-400" id="code-color">#005EFF</span>' } }</span>
-                    </div>
-                    <p class="text-sm text-slate-500">Integrating Tailwind CSS and Ant Design tokens ensures a single source of truth for our entire product ecosystem.</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- Zero DOM Section -->
-        <section id="section-zerodom" class="content-section p-6 md:p-12 max-w-6xl mx-auto">
-            <div class="mb-10">
-                <p class="text-sm font-bold text-[#005EFF] mb-2 uppercase tracking-widest">Section 03 / No-Regression Strategy</p>
-                <h2 class="text-3xl md:text-5xl font-black text-slate-900 mb-6 leading-tight">Zero DOM Modernization</h2>
-            </div>
-
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
-                <div class="space-y-8">
-                    <div class="flex justify-center bg-slate-200 p-1 rounded-2xl w-fit">
-                        <button onclick="appState.toggleUI(true)" id="btn-legacy" class="px-6 py-2 rounded-xl font-bold transition-all text-slate-500">Legacy View</button>
-                        <button onclick="appState.toggleUI(false)" id="btn-modern" class="px-6 py-2 rounded-xl font-bold transition-all bg-white shadow-sm text-[#005EFF]">Modern Override</button>
-                    </div>
-                    <div class="bg-slate-100 p-8 rounded-3xl border border-slate-200 flex justify-center min-h-[300px]">
-                        <div id="target-el" class="modern-ui-mock w-full max-w-sm">
-                            <div class="flex items-center justify-between mb-4 border-b pb-2">
-                                <h4 class="font-bold">Technical Review</h4>
-                                <span class="text-[#005EFF]">»</span>
-                            </div>
-                            <p class="text-sm text-slate-500 mb-6">Standardizing grids and typography purely through CSS overrides.</p>
-                            <button class="bg-[#005EFF] text-white px-4 py-2 rounded font-bold text-xs">Action Button</button>
-                        </div>
-                    </div>
-                </div>
-                <div class="screenshot-wrapper">
-                    <img src="Screenshot 2026-03-23 at 20.36.03.png" alt="12px Grid Application" class="w-full h-auto">
-                    <div class="img-overlay">Ref: Screenshot 2026-03-23 at 20.36.03.png</div>
-                </div>
-            </div>
-        </section>
-
-        <!-- AI Section -->
-        <section id="section-ai" class="content-section p-6 md:p-12 max-w-6xl mx-auto mb-20">
-            <div class="mb-10">
-                <p class="text-sm font-bold text-[#005EFF] mb-2 uppercase tracking-widest">Section 04 / AI Integration</p>
-                <h2 class="text-3xl md:text-5xl font-black text-slate-900 mb-6 leading-tight">AI-Driven Demo Generation</h2>
-            </div>
-            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-                <div class="lg:col-span-5 space-y-6">
-                    <div class="bg-white p-8 rounded-3xl shadow-sm border border-slate-100 border-t-4 border-t-purple-500">
-                        <h4 class="text-xl font-bold text-slate-800 mb-4 tracking-tight font-black uppercase">Accelerating Discovery</h4>
-                        <ul class="space-y-4 text-slate-600 text-sm">
-                            <li>✨ <strong>Auto-Requirement Elicitation</strong></li>
-                            <li>✨ <strong>Dify-Integrated Prototyping</strong></li>
-                            <li>✨ <strong>Data-Rich Experience</strong></li>
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+                <div class="lg:col-span-4 space-y-6">
+                    <div class="why-card border-t-4 border-t-[#005EFF]">
+                        <h4 class="font-black text-[#005EFF] mb-4">WHY THIS CHANGE?</h4>
+                        <ul class="space-y-4 text-sm text-slate-600">
+                            <li>• <strong>Scaling Bottlenecks</strong>: Static handovers failed as project complexity and velocity grew.</li>
+                            <li>• <strong>Maintenance Debt</strong>: Hard-coded hex values made global rebranding nearly impossible.</li>
+                            <li>• <strong>Logic Fragility</strong>: Modifying legacy HTML structures for new UIs created high regression risks.</li>
                         </ul>
                     </div>
                 </div>
-                <div class="screenshot-wrapper lg:col-span-7">
-                    <img src="Screenshot 2026-03-23 at 20.26.27.png" alt="AI Feature Simulation" class="w-full h-auto">
-                    <div class="img-overlay">Ref: Screenshot 2026-03-23 at 20.26.27.png</div>
+                <div class="lg:col-span-8 bg-white p-8 rounded-3xl shadow-sm border border-slate-200">
+                    <h3 class="text-xl font-bold text-slate-800 mb-6">Efficiency Gains Across Workflow</h3>
+                    <div class="chart-container">
+                        <canvas id="efficiencyChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Live Review -->
+        <section id="section-review" class="content-section max-w-7xl mx-auto space-y-10">
+            <div class="space-y-4">
+                <h2 class="text-4xl font-black text-slate-900">Live Code Review</h2>
+                <p class="text-slate-500 text-lg">Replacing static PNG/Figma reviews with browser-based session reviews on live code.</p>
+            </div>
+
+            <div class="screenshot-wrapper">
+                <img src="Screenshot 2026-03-23 at 17.33.20.png" alt="Live Code Review" class="w-full h-auto">
+                <div class="img-overlay">Practical Application: Inspecting live components directly in the browser for precision validation.</div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="why-card">
+                    <h4 class="font-black text-blue-600 mb-4 tracking-tighter uppercase">Why we do this: Technical Precision</h4>
+                    <ul class="space-y-4 text-sm text-slate-600">
+                        <li class="flex gap-3">
+                            <span class="font-bold text-blue-500">📍</span>
+                            <span><strong>Edge Case Discovery</strong>: Real browsers expose responsive, z-index, and overflow issues that static designs simply hide.</span>
+                        </li>
+                        <li class="flex gap-3">
+                            <span class="font-bold text-blue-500">📍</span>
+                            <span><strong>Zero Translation Loss</strong>: Designers and Devs communicate via "Inspect Element", ensuring 1:1 fidelity of the final build.</span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="why-card">
+                    <h4 class="font-black text-blue-600 mb-4 tracking-tighter uppercase">Why we do this: Speed to Market</h4>
+                    <ul class="space-y-4 text-sm text-slate-600">
+                        <li class="flex gap-3">
+                            <span class="font-bold text-blue-500">📍</span>
+                            <span><strong>Instant Correction</strong>: Minor spacing or color adjustments happen in real-time during the review, eliminating dozens of JIRA tickets.</span>
+                        </li>
+                        <li class="flex gap-3">
+                            <span class="font-bold text-blue-500">📍</span>
+                            <span><strong>Stakeholder Buy-in</strong>: Showing a functional website is more convincing than showing a picture of one.</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- New Design System Architecture -->
+        <section id="section-system" class="content-section max-w-7xl mx-auto space-y-10">
+            <div class="space-y-4">
+                <h2 class="text-4xl font-black text-slate-900">New Design System Architecture</h2>
+                <p class="text-slate-500 text-lg">Synchronized tokens between Tailwind CSS and Ant Design configurations.</p>
+            </div>
+
+            <div class="screenshot-wrapper">
+                <img src="Screenshot 2026-03-23 at 20.26.53.png" alt="Design Token Panel" class="w-full h-auto">
+                <div class="img-overlay">Ref: Centralized Theme Configuration for Dual-Framework Synchronization.</div>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                <div class="why-card lg:col-span-2">
+                    <h4 class="font-black text-blue-600 mb-6 tracking-tighter uppercase">Why we do this: Systemic Consistency</h4>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div class="space-y-4">
+                            <p class="text-sm font-bold text-slate-800">Single Source of Truth</p>
+                            <p class="text-xs text-slate-500 leading-relaxed">One configuration file manages both custom Tailwind classes and AntD components, preventing visual fragmentation between different developers.</p>
+                        </div>
+                        <div class="space-y-4">
+                            <p class="text-sm font-bold text-slate-800">Branding Agility</p>
+                            <p class="text-xs text-slate-500 leading-relaxed">Global rebranding or theme updates (Dark Mode) become a 5-second task instead of a multi-day manual hunt for hex codes.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="why-card flex flex-col justify-center gap-6">
+                    <h4 class="font-black text-blue-600 mb-2 tracking-tighter uppercase">Live Token Simulator</h4>
+                    <div class="flex gap-4">
+                        <button onclick="appState.setAccentColor('#005EFF')" class="flex-1 color-swatch-btn bg-slate-50 p-4 rounded-2xl border border-slate-200 flex flex-col items-center gap-2 hover:border-[#005EFF] transition-colors">
+                            <span class="w-8 h-8 rounded-full bg-[#005EFF]"></span>
+                            <span class="text-[9px] font-bold text-slate-400">BLUE</span>
+                        </button>
+                        <button onclick="appState.setAccentColor('#8B5CF6')" class="flex-1 color-swatch-btn bg-slate-50 p-4 rounded-2xl border border-slate-200 flex flex-col items-center gap-2 hover:border-[#8B5CF6] transition-colors">
+                            <span class="w-8 h-8 rounded-full bg-[#8B5CF6]"></span>
+                            <span class="text-[9px] font-bold text-slate-400">VIOLET</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Zero DOM Modernization -->
+        <section id="section-zerodom" class="content-section max-w-7xl mx-auto space-y-10">
+            <div class="space-y-4">
+                <h2 class="text-4xl font-black text-slate-900">Zero DOM Modernization</h2>
+                <p class="text-slate-500 text-lg">Incremental UX improvements on legacy components through CSS Grid and Symmetric Spacing.</p>
+            </div>
+
+            <div class="screenshot-wrapper">
+                <img src="Screenshot 2026-03-23 at 20.36.03.png" alt="12px Grid Application" class="w-full h-auto">
+                <div class="img-overlay">Implementation: Transforming Legacy UI into Modern Cards using CSS Overrides only.</div>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                <div class="why-card">
+                    <h4 class="font-black text-green-600 mb-6 tracking-tighter uppercase">Why we do this: Risk Mitigation</h4>
+                    <ul class="space-y-5 text-sm text-slate-600">
+                        <li>🛡️ <strong>100% Logic Safety</strong>: Modifying HTML structures in older systems often breaks fragile business logic. By keeping the DOM identical, we eliminate regression risk.</li>
+                        <li>🛡️ <strong>Visual Harmony</strong>: Older modules can coexist with new ones by adopting the same grid and color tokens through CSS-only updates.</li>
+                    </ul>
+                </div>
+                <div class="why-card space-y-6">
+                    <div class="flex justify-between items-center">
+                        <h4 class="font-black text-green-600 tracking-tighter uppercase text-sm">Interactive CSS Simulation</h4>
+                        <div class="flex bg-slate-100 p-1 rounded-xl shadow-inner">
+                            <button onclick="appState.toggleUI(true)" id="btn-legacy" class="px-6 py-2 rounded-lg font-bold text-xs text-slate-400">LEGACY</button>
+                            <button onclick="appState.toggleUI(false)" id="btn-modern" class="px-6 py-2 rounded-lg font-bold text-xs bg-white shadow-sm text-[#005EFF]">MODERN</button>
+                        </div>
+                    </div>
+                    <div id="target-el" class="modern-ui-mock transition-all duration-300">
+                        <h4 class="font-bold border-b pb-2 mb-4">Technical Document Review</h4>
+                        <p class="text-xs text-slate-500 mb-6 leading-relaxed">Systematic review of reports based on regulatory specs without touching underlying JS code.</p>
+                        <button class="bg-[#005EFF] text-white px-6 py-2 rounded-lg font-bold text-[10px] uppercase tracking-widest">Execute Job</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- AI Prototyping -->
+        <section id="section-ai" class="content-section max-w-7xl mx-auto space-y-10 mb-20">
+            <div class="space-y-4">
+                <h2 class="text-4xl font-black text-slate-900">AI-Driven Prototyping</h2>
+                <p class="text-slate-500 text-lg">Integrating Dify API for dynamic requirement generation and rapid stakeholder discovery.</p>
+            </div>
+
+            <div class="screenshot-wrapper">
+                <img src="Screenshot 2026-03-23 at 20.26.27.png" alt="AI Feature Simulation" class="w-full h-auto">
+                <div class="img-overlay">Ref: AI-Powered Requirement Generator using real dynamic context via Dify API.</div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="why-card border-l-8 border-l-purple-500">
+                    <h4 class="font-black text-purple-600 mb-6 tracking-tighter uppercase">Why we do this: Realistic Validation</h4>
+                    <p class="text-sm text-slate-600 leading-relaxed">
+                        Stakeholders often struggle to validate "abstract" AI features. By using Dify to generate real-world product data and requirements on-the-fly, we move from "telling" to "showing," significantly increasing the quality of initial user research.
+                    </p>
+                </div>
+                <div class="why-card border-l-8 border-l-purple-500">
+                    <h4 class="font-black text-purple-600 mb-6 tracking-tighter uppercase">Why we do this: Discovery Speed</h4>
+                    <p class="text-sm text-slate-600 leading-relaxed">
+                        Instead of manual data entry for demos, the system "elicits" its own data. This reduces the time to create functional discovery prototypes from days to minutes, allowing for more iterative design cycles.
+                    </p>
                 </div>
             </div>
         </section>
@@ -345,7 +350,7 @@
             setAccentColor(hex) {
                 this.accentColor = hex;
                 document.querySelectorAll('.nav-btn.active').forEach(el => el.style.backgroundColor = hex);
-                document.getElementById('code-color').innerText = hex;
+                document.querySelectorAll('.accent-text').forEach(el => el.style.color = hex);
                 if (this.chart) {
                     this.chart.data.datasets[0].backgroundColor[1] = hex;
                     this.chart.update();
@@ -358,15 +363,15 @@
                 const btnL = document.getElementById('btn-legacy');
 
                 if (isLegacy) {
-                    target.className = 'legacy-ui-mock w-full max-w-sm';
-                    btnL.classList.add('bg-white', 'shadow-sm', 'text-slate-900');
-                    btnM.classList.remove('bg-white', 'shadow-sm', 'text-[#005EFF]');
+                    target.className = 'legacy-ui-mock transition-all duration-300';
+                    btnL.classList.add('bg-white', 'shadow-md', 'text-slate-900');
+                    btnM.classList.remove('bg-white', 'shadow-md', 'text-[#005EFF]');
                     btnM.style.color = '#64748b';
                 } else {
-                    target.className = 'modern-ui-mock w-full max-w-sm';
-                    btnM.classList.add('bg-white', 'shadow-sm');
+                    target.className = 'modern-ui-mock transition-all duration-300';
+                    btnM.classList.add('bg-white', 'shadow-md');
                     btnM.style.color = this.accentColor;
-                    btnL.classList.remove('bg-white', 'shadow-sm', 'text-slate-900');
+                    btnL.classList.remove('bg-white', 'shadow-md', 'text-slate-900');
                 }
             },
 
@@ -378,9 +383,9 @@
                 this.chart = new Chart(ctx, {
                     type: 'bar',
                     data: {
-                        labels: ['Legacy Process', '2026 Optimized'],
+                        labels: ['Legacy Workflow', '2026 Optimized'],
                         datasets: [{
-                            label: 'Adjustment Overhead (Units)',
+                            label: 'Overhead Units (Lower is Better)',
                             data: [100, 33],
                             backgroundColor: ['#cbd5e1', this.accentColor],
                             borderRadius: 12
